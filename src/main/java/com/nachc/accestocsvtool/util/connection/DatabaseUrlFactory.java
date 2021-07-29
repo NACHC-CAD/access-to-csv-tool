@@ -10,6 +10,7 @@ public class DatabaseUrlFactory {
 			String fileName = file.getCanonicalPath();
 			fileName = fileName.replace("\\", "//");
 			url = "jdbc:ucanaccess://" + fileName;
+			url = url + ";sysSchema=true";
 			return url;
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
