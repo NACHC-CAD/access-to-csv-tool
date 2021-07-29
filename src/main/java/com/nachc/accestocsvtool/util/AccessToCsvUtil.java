@@ -14,17 +14,25 @@ public class AccessToCsvUtil {
 
 	public static void writeToCsv(String tableName, File outFile, Connection conn) {
 		try {
-			doWriteToCsv(tableName, outFile, conn);
+			String sqlString = "select * from [" + tableName + "]";
+			doWriteToCsv(sqlString, outFile, conn);
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
 		}
 	}
 
-	private static void doWriteToCsv(String tableName, File outFile, Connection conn) throws Exception {
+	public static void writeQueryResultsToCsv(String sqlString, File outFile, Connection conn) {
+		try {
+			doWriteToCsv(sqlString, outFile, conn);
+		} catch (Exception exp) {
+			throw new RuntimeException(exp);
+		}
+	}
+
+	private static void doWriteToCsv(String sqlString, File outFile, Connection conn) throws Exception {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			String sqlString = "select * from [" + tableName + "]";
 			ps = conn.prepareStatement(sqlString);
 			rs = ps.executeQuery();
 			File dir = outFile.getParentFile();
