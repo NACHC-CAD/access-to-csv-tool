@@ -45,7 +45,7 @@ public class ConnectionUtilIntegrationTest {
 			List<String> tableNames = MsAccessDatabaseUtil.getTableNames(conn);
 			log.info("Got " + tableNames.size() + " tables");
 			for (int i = 0; i < tableNames.size(); i++) {
-				log.info(tableNames.get(i));
+				log.info("\t" + tableNames.get(i));
 			}
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);

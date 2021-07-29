@@ -13,6 +13,8 @@ public class TestParams {
 
 	private static final String FILE_NAME = "/northwind.accdb";
 
+	private static final String OUTPUT_DIR_NAME = "/output/csv/nortwind";
+
 	public static String getTestFileResourcePath() {
 		return FILE_NAME;
 	}
@@ -29,5 +31,10 @@ public class TestParams {
 		log.info("Got connection: " + conn);
 		return conn;
 	}
-	
+
+	public static File getOutputFile() {
+		File file = FileUtil.getFile(OUTPUT_DIR_NAME);
+		return file;
+	}
+
 }
