@@ -1,6 +1,7 @@
 package com.nachc.accestocsvtool.aaa.writetocsv;
 
 import java.sql.Connection;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -17,7 +18,7 @@ public class WriteToCsvIntegrationTest {
 		Connection conn = null;
 		try {
 			conn = TestParams.getTestDatabase();
-			List<String> tableName = MsAccessDatabaseUtil.getTableNames(conn);
+			List<String> tableNames = MsAccessDatabaseUtil.getTableNames(conn);
 		} catch (Exception exp) {
 			if (conn != null) {
 				conn.close();
