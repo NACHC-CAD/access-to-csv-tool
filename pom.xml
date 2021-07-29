@@ -74,6 +74,18 @@
 		    <version>4.0.4</version>
 		</dependency>
 
+		<!-- 
+		*
+		* APACHE COMMONS CSV
+		*
+		* -->
+
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-csv</artifactId>
+		    <version>1.8</version>
+		</dependency>
+
 	</dependencies>
 
 	<!-- 

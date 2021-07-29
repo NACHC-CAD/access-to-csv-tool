@@ -4,14 +4,12 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 
 import org.junit.Test;
 
 import com.nachc.accestocsvtool.aaa.params.TestParams;
-import com.nachc.accestocsvtool.util.database.DatabaseUtil;
+import com.nachc.accestocsvtool.util.database.MsAccessDatabaseUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,7 +26,6 @@ public class ConnectionUtilIntegrationTest {
 			conn = ConnectionUtil.getConnection(file);
 			log.info("Got connection: " + conn);
 			assertTrue(conn != null);
-			showTables(conn);
 			log.info("Done.");
 		} finally {
 			if (conn != null) {
@@ -37,22 +34,24 @@ public class ConnectionUtilIntegrationTest {
 		}
 	}
 
-	private void showTables(Connection conn) throws Exception {
-		PreparedStatement ps = null;
-		ResultSet rs = null;
+	@Test
+	public void shouldGetTables() throws Exception {
+		log.info("Starting test...");
+		Connection conn = null;
 		try {
-			String sqlString = "SELECT * FROM sys.MSysObjects WHERE Type=1 AND Flags=0";
-			ps = conn.prepareStatement(sqlString);
-			rs = ps.executeQuery();
-			log.info("Got result set");
-			List<String> colNames = DatabaseUtil.getColumnNames(rs);
-			log.info("Got columnNames");
-		} finally {
-			if(rs != null) {
-				rs.close();
+			File file = TestParams.getTestDatabaseFile();
+			conn = ConnectionUtil.getConnection(file);
+			log.info("Got connection");
+			List<String> tableNames = MsAccessDatabaseUtil.getTableNames(conn);
+			log.info("Got " + tableNames.size() + " tables");
+			for (int i = 0; i < tableNames.size(); i++) {
+				log.info(tableNames.get(i));
 			}
-			if(ps != null) {
-				ps.close();
+		} catch (Exception exp) {
+			throw new RuntimeException(exp);
+		} finally {
+			if (conn != null) {
+				conn.close();
 			}
 		}
 	}
