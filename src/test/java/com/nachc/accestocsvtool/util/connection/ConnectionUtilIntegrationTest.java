@@ -23,7 +23,7 @@ public class ConnectionUtilIntegrationTest {
 			log.info("Starting test...");
 			File file = TestParams.getTestDatabaseFile();
 			log.info("Geting connection");
-			conn = ConnectionUtil.getConnection(file);
+			conn = MsAccessConnectionUtil.getConnection(file);
 			log.info("Got connection: " + conn);
 			assertTrue(conn != null);
 			log.info("Done.");
@@ -40,7 +40,7 @@ public class ConnectionUtilIntegrationTest {
 		Connection conn = null;
 		try {
 			File file = TestParams.getTestDatabaseFile();
-			conn = ConnectionUtil.getConnection(file);
+			conn = MsAccessConnectionUtil.getConnection(file);
 			log.info("Got connection");
 			List<String> tableNames = MsAccessDatabaseUtil.getTableNames(conn);
 			log.info("Got " + tableNames.size() + " tables");

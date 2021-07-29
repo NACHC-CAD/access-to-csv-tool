@@ -4,7 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnectionUtil {
+public class MsAccessConnectionUtil {
 
 	public static Connection getConnection(File file) {
 		String url = DatabaseUrlFactory.getJdbcConnectionString(file);

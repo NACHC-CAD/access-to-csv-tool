@@ -3,7 +3,7 @@ package com.nachc.accestocsvtool.aaa.params;
 import java.io.File;
 import java.sql.Connection;
 
-import com.nachc.accestocsvtool.util.connection.ConnectionUtil;
+import com.nachc.accestocsvtool.util.connection.MsAccessConnectionUtil;
 import com.nachc.accestocsvtool.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class TestParams {
 	public static Connection getTestDatabase() {
 		File file = TestParams.getTestDatabaseFile();
 		log.info("Geting connection");
-		Connection conn = ConnectionUtil.getConnection(file);
+		Connection conn = MsAccessConnectionUtil.getConnection(file);
 		log.info("Got connection: " + conn);
 		return conn;
 	}
