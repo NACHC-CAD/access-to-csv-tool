@@ -6,7 +6,7 @@ public class DatabaseUrlFactory {
 
 	public static String getJdbcConnectionString(File file) {
 		try {
-			String url = "";
+			String url;
 			String fileName = file.getCanonicalPath();
 			fileName = fileName.replace("\\", "//");
 			url = "jdbc:ucanaccess://" + fileName;
@@ -16,5 +16,4 @@ public class DatabaseUrlFactory {
 			throw new RuntimeException(exp);
 		}
 	}
-
 }

@@ -6,24 +6,12 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.List;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
-import com.nachc.accestocsvtool.util.connection.MsAccessConnectionUtil;
-import com.nachc.accestocsvtool.util.database.MsAccessDatabaseUtil;
-
 public class AccessToCsvUtil {
 
-	public static Connection getConnection(File file) {
-		return MsAccessConnectionUtil.getConnection(file);
-	}
-	
-	public static List<String> getTableNames(Connection conn) {
-		return MsAccessDatabaseUtil.getTableNames(conn);
-	}
-	
 	public static void writeToCsv(String tableName, File outFile, Connection conn) {
 		try {
 			String sqlString = "select * from [" + tableName + "]";
