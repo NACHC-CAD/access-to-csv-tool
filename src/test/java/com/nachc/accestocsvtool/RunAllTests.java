@@ -9,12 +9,18 @@ import com.googlecode.junittoolbox.WildcardPatternSuite;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The type Run all tests.
+ */
 @Slf4j
 @RunWith(WildcardPatternSuite.class)
 @SuiteClasses({ "**/*IntegrationTest.class" })
 public class RunAllTests {
 
-	@BeforeClass
+    /**
+     * Sets .
+     */
+    @BeforeClass
 	public static void setup() {
 		log.info("***********************************************************");
 		log.info("* Starting set up");
@@ -22,7 +28,10 @@ public class RunAllTests {
 		log.info("***********************************************************");
 	}
 
-	@AfterClass
+    /**
+     * Cleanup.
+     */
+    @AfterClass
 	public static void cleanup() {
 		log.info("");
 		log.info("");

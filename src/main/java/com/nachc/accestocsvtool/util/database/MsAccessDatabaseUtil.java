@@ -8,10 +8,19 @@ import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The type Ms access database util.
+ */
 @Slf4j
 public class MsAccessDatabaseUtil {
 
-	public static List<String> getTableNames(Connection conn) {
+    /**
+     * Gets table names.
+     *
+	 * @param conn Java SQL connection object specifying a Database
+     * @return the table names
+     */
+    public static List<String> getTableNames(Connection conn) {
 		try {
 			return doGetTableNames(conn);
 		} catch (Exception exp) {
@@ -51,7 +60,13 @@ public class MsAccessDatabaseUtil {
 		}
 	}
 
-	public static List<String> getColumnNames(ResultSet rs) {
+    /**
+     * Gets column names.
+     *
+     * @param rs the Result Set
+     * @return list of column names
+     */
+    public static List<String> getColumnNames(ResultSet rs) {
 		try {
 			ArrayList<String> rtn = new ArrayList<String>();
 			int cnt = rs.getMetaData().getColumnCount();

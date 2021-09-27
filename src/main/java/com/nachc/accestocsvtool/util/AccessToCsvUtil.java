@@ -14,16 +14,38 @@ import org.apache.commons.csv.CSVPrinter;
 import com.nachc.accestocsvtool.util.connection.MsAccessConnectionUtil;
 import com.nachc.accestocsvtool.util.database.MsAccessDatabaseUtil;
 
+/**
+ * AccessToCsvUtil type providing utilities specific to CSV filetype.
+ */
 public class AccessToCsvUtil {
 
+	/**
+	 * Gets connection.
+	 *
+	 * @param file The file
+	 * @return A Java SQL connection object specifying a Database
+	 */
 	public static Connection getConnection(File file) {
 		return MsAccessConnectionUtil.getConnection(file);
 	}
-	
+
+	/**
+	 * Gets table names.
+	 *
+	 * @param conn Java SQL connection object specifying a Database
+	 * @return the table names
+	 */
 	public static List<String> getTableNames(Connection conn) {
 		return MsAccessDatabaseUtil.getTableNames(conn);
 	}
-	
+
+	/**
+	 * Write to csv.
+	 *
+	 * @param tableName the table name
+	 * @param outFile   the output file
+	 * @param conn      Java SQL connection object specifying a Database
+	 */
 	public static void writeToCsv(String tableName, File outFile, Connection conn) {
 		try {
 			String sqlString = "select * from [" + tableName + "]";
@@ -33,6 +55,13 @@ public class AccessToCsvUtil {
 		}
 	}
 
+	/**
+	 * Write query results to csv.
+	 *
+	 * @param sqlString the sql string
+	 * @param outFile   the out file
+	 * @param conn      Java SQL connection object specifying a Database
+	 */
 	public static void writeQueryResultsToCsv(String sqlString, File outFile, Connection conn) {
 		try {
 			doWriteToCsv(sqlString, outFile, conn);
