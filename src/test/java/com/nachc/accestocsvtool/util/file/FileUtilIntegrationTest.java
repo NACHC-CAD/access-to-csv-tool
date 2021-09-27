@@ -10,9 +10,15 @@ import com.nachc.accestocsvtool.aaa.params.TestParams;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The type File util integration test.
+ */
 @Slf4j
 public class FileUtilIntegrationTest {
-	
+
+	/**
+	 * Should get file.
+	 */
 	@Test
 	public void shouldGetFile() {
 		try {
@@ -30,5 +36,5 @@ public class FileUtilIntegrationTest {
 			throw new RuntimeException(exp);
 		}
 	}
-	
+
 }

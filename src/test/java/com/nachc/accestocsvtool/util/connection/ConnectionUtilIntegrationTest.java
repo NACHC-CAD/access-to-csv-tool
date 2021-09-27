@@ -13,9 +13,17 @@ import com.nachc.accestocsvtool.util.database.MsAccessDatabaseUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * The type Connection util integration test.
+ */
 @Slf4j
 public class ConnectionUtilIntegrationTest {
 
+	/**
+	 * Should get connection.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	public void shouldGetConnection() throws Exception {
 		Connection conn = null;
@@ -34,6 +42,11 @@ public class ConnectionUtilIntegrationTest {
 		}
 	}
 
+	/**
+	 * Should get tables.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Test
 	public void shouldGetTables() throws Exception {
 		log.info("Starting test...");
